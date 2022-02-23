@@ -16,7 +16,6 @@ public class lerrinformacionurl {
             String inputLine = "";
             while ((inputLine = reader.readLine()) != null) {
                 pagina = pagina + inputLine;
-                System.out.println(inputLine);
             }
         } catch (IOException x) {
             System.err.println(x);
