@@ -28,7 +28,7 @@ public class HttpServer {
         }
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String linea;
+        String linea,outputLine = null;
         while ((linea = in.readLine()) != null) {
             System.out.println(clima(linea));
             if (linea.equals("")) {
@@ -37,7 +37,22 @@ public class HttpServer {
             } else {
                 System.out.println("Entrada:" + linea);
             }
+
         }
+        outputLine = "HTTP/1.1 200 OK\r\n"
+                + "Content-Type: text/html\r\n"
+                + "\r\n"
+                + "<!DOCTYPE html>\n"
+                + "<html>\n"
+                + "<head>\n"
+                + "<meta charset=\"UTF-8\">\n"
+                + "<title>Title of the document</title>\n"
+                + "</head>\n"
+                + "<body>\n"
+                + "<h1>Clima</h1>\n"
+                + "</body>\n"
+                + "</html>\n" + linea;
+        out.println(outputLine);
         out.close();
         in.close();
         clientSocket.close();
@@ -52,11 +67,8 @@ public class HttpServer {
      */
     private static String clima(String linea) throws Exception {
         String api_key = "9aef024db157bbe617995ff3ce911c8c";
-
         String base_url = "http://api.openweathermap.org/data/2.5/weather?";
-
         String city_name = linea;
-
         String complete_url = base_url + "appid=" + api_key + "&q=" + city_name;
         String pagina = lerrinformacionurl.consultar(complete_url);
         return pagina;
