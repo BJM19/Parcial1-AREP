@@ -17,4 +17,4 @@ Para poder utilizar esta aplicación se deben tener instalados los siguientes so
   Maven - Dependencias de maven
  
 ## Licencia
-  En este proyecto se usó la licencia GNU - se puede ver LICENSE.txt para más detalles.
+  En este proyecto se usó la licencia GNU - se puede ver [LICENSE.txt](LICENSE.txt) para más detalles.
